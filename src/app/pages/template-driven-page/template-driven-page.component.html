@@ -1,0 +1,73 @@
+<form #myForm="ngForm" novalidate>
+  <div class="form-group">
+    <div class="label"><label>First name:</label></div>
+    <input
+      class="form-control"
+      name="firstName"
+      ngModel
+      required
+      pattern="[a-zA-Z ]*"
+      #firstName="ngModel"/>
+    <div [hidden]="firstName.valid || firstName.untouched || firstName.pristine" class="alert">
+      First name must be only english letter
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="label"><label>Last name:</label></div>
+    <input
+      class="form-control"
+      name="lastName"
+      ngModel
+      required
+      pattern="[a-zA-Z ]*"
+      #lastName="ngModel"/>
+    <div [hidden]="lastName.valid || lastName.untouched || lastName.pristine" class="alert">
+      Last name must be only english letter
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="label"><label>Email:</label></div>
+    <input
+      class="form-control"
+      name="email"
+      ngModel
+      required
+      email
+      #email="ngModel"/>
+    <div [hidden]="email.valid || email.untouched || email.pristine" class="alert">
+      Invalid format E-mail
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="label"><label>Password:</label></div>
+    <input
+      type="password"
+      class="form-control"
+      name="password"
+      ngModel
+      required
+      pattern="[0-9a-zA-Z!@#$%^&*]*"
+      #password="ngModel"/>
+    <div [hidden]="password.valid || password.untouched || password.pristine" class="alert">
+      Password must content english letter, numbers and symbols '!@#$%^&*'
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="label"><label>Phone:</label></div>
+    <input
+      class="form-control"
+      name="phone"
+      ngModel
+      required
+      pattern="^((8|\+3)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"
+      #phone="ngModel"/>
+    <div [hidden]="phone.valid || phone.untouched || phone.pristine" class="alert">
+      Invalid format phone number
+    </div>
+  </div>
+  <div class="form-group">
+    <button [disabled]="myForm.invalid"
+            class="btn btn-default" (click)="submit(myForm)">Добавить
+    </button>
+  </div>
+</form>
